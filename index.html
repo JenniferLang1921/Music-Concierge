@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md">
+                <div class="jumbotron text-center bg-dark text-white">
+                    <h1 class="display-4">Search!</h1>
+                    <form>
+                        <div class="form-row align-items-center">
+                            <div class="col-md-11">
+                                <input class="form-control form-control-lg mr-2" id="search-input" type="search" placeholder="search" aria-label="Search">
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-secondary btn-lg" id="submit-query" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md" id="search-results"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- bandsindown.com Tour Dates Widget http://docs.bandsintown.com/artist_platform/tour_dates_widget -->
+
+
+    <!-- jQuery Core  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- Local JS -->
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>

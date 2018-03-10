@@ -120,16 +120,27 @@
   */
 
   //Get Form Input
-  q = $('#query').val();
+
+  $("#search-btn").on("click", function(event) {
+    event.preventDefault();
+
+    var q =  $('#query').val().trim();
+
+    //      //clear results
+//      $('#results').html('');
+//
+//  q = $('#query').val().trim();
 
 
  $.ajax({
  method: 'get',
- url: "https://www.googleapis.com/youtube/v3/search?qcats&key=AIzaSyCsKTmPxVHUp9o0kXMu5_gkI2XQU1ohWIA&type=video&part=snippet&filter=id&maxResults=1&videoEmbeddable=true",
+ url: 'https://www.googleapis.com/youtube/v3/search?q=' + q + '&key=AIzaSyCsKTmPxVHUp9o0kXMu5_gkI2XQU1ohWIA&type=video&part=snippet&filter=id&maxResults=1&videoEmbeddable=true',
  dataType: "jsonp",
  }).done(function(data) {
-  console.log(data)
+console.log(data)
  })
+})
+// }
  //videoId  is what we want to grab
  //research js video library to put it into an iframe  https://www.javascripting.com/view/video-js
  //https://www.youtube.com/watch?v=oFYyTZwMyAg&feature=youtu.be

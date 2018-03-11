@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autocomplete Input</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <style>
+  
+  
+  
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+    var availableArtists = [
+  
+"Bon Jovi",
+"Ed Sheeran",
+"Post Malone",
+"Drake",
+"Imagine Dragons",
+"Kendrick Lamar",
+"Bruno Mars",
+"Migos",
+"Chris Stapleton",
+"Cardi B",
+"Future",
+"Camila Cabello",
+"Justin Timberlake",
+"6ix9ine",
+"BTS",
+"Halsey",
+"Dua Lipa",
+"P!nk",
+"Maroon 5",
+"Charlie Puth",
+"Khalid",
+"NF",
+"SZA",
+"The Weeknd",
+"Thomas Rhett",
+"Demi Lovato",
+"Eminem",
+"Luke Bryan",
+"Kane Brown",
+"Florida Georgia Line",
+"Logic",
+"G-Eazy",
+"Taylor Swift",
+"Vance Joy",
+"Jason Aldean",
+"EXO",
+"Shawn Mendes",
+"Rihanna",
+"Sam Smith",
+"Metallica",
+"21 Savage",
+"Michael Jackson",
+"Portugal. The Man",
+"Marshmello",
+"Lil Uzi Vert",
+"Luke Combs",
+"YoungBoy Never Broke Again",
+"Bebe Rexha",
+"Adele",
+"Ozuna",
+"Ty Dolla $ign",
+"The Chainsmokers",
+"Justin Bieber",
+"Bazzi",
+
+    ];
+    $(document).ready(function() {
+        $("#autocomplete").autocomplete({source: availableArtists});
+    });
+  </script>
+</head>
+<body>
+ 
+    <h1>jQuery Autocomplete</h1>
+    <input type="text" name="country" id="autocomplete" placeholder="Type countries here"/>
+ 
+</body>
+</html>

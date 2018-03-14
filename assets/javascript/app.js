@@ -1,7 +1,7 @@
 "use strict;"
 
 /*
-var someElement = $('<a class="dummy-media-object" href="http://twitter.com/SaraSoueidan"><img class="round" src="https://lastfm-img2.akamaized.net/i/u/174s/3bace338cca24495c44dbbfed0e8fd4f.png" alt="Sara Soueidan"/><h3>Kendrick Lamar</h3></a>');
+var someElement = $('<a class="dummy-media-object" href="https://twitter.com/SaraSoueidan"><img class="round" src="https://lastfm-img2.akamaized.net/i/u/174s/3bace338cca24495c44dbbfed0e8fd4f.png" alt="Sara Soueidan"/><h3>Kendrick Lamar</h3></a>');
 */
 
 var apiKeyOne = "3ab16c26dfaba69c000d8a6d7542d205";
@@ -159,7 +159,7 @@ function retrieveArtistEvents() {
 
 function retrieveArtistInfo(query) {
 
-    var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + query + '&api_key=' + apiKeyOne + '&format=json&limit=10';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + query + '&api_key=' + apiKeyOne + '&format=json&limit=10';
     //console.log(queryURL);
 
     $.ajax({
@@ -172,7 +172,7 @@ function retrieveArtistInfo(query) {
 }
 
 function retrieveTopTracks() {
-    var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=' + apiKeyOne + '&format=json&limit=10';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=' + apiKeyOne + '&format=json&limit=10';
 
     $.ajax({
         method: "GET",
@@ -183,7 +183,7 @@ function retrieveTopTracks() {
 }
 
 function retrieveTopArtists() {
-    var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=' + apiKeyOne + '&format=json&limit=10';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=' + apiKeyOne + '&format=json&limit=10';
 
     $.ajax({
         method: "GET",
@@ -194,7 +194,7 @@ function retrieveTopArtists() {
 }
 
 function retrieveTopTags() {
-    var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptags&api_key=' + apiKeyOne + '&format=json&limit=10';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettoptags&api_key=' + apiKeyOne + '&format=json&limit=10';
     var tagListArr = [];
     //console.log(queryURL);
     //console.log(tagListArr);
@@ -222,7 +222,7 @@ function retrieveTopAlbumPerTag(inputObj) {
 
     for (var i = 0; i < inputObj.length; i++) {
         var index = i;
-        var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' + inputObj[index] + '&api_key=' + apiKeyOne + '&format=json&limit=1';
+        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' + inputObj[index] + '&api_key=' + apiKeyOne + '&format=json&limit=1';
         //console.log(index, inputObj[index]);
 
         $.ajax({
@@ -278,7 +278,7 @@ $(document).on('click', '.artist-tile', function (ev) {
 
     $(".morphsearch-content").hide();
     /*
-    $(".morphsearch-results").append('<a class="dummy-media-object" href="http://twitter.com/SaraSoueidan"><img class="round" src="https://lastfm-img2.akamaized.net/i/u/174s/3bace338cca24495c44dbbfed0e8fd4f.png" alt="Sara Soueidan"/><h3>' + document.getElementById("searchQuery").value + '</h3></a>');
+    $(".morphsearch-results").append('<a class="dummy-media-object" href="https://twitter.com/SaraSoueidan"><img class="round" src="https://lastfm-img2.akamaized.net/i/u/174s/3bace338cca24495c44dbbfed0e8fd4f.png" alt="Sara Soueidan"/><h3>' + document.getElementById("searchQuery").value + '</h3></a>');
     */
 
     retrieveArtistInfo(searchQuery);

@@ -4,8 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title>Last youtube Search</title>
-  <!-- <link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet"> -->
-  <!-- <script src="//vjs.zencdn.net/5.19/video.min.js"></script> -->
+  <!--<link href="http://vjs.zencdn.net/6.6.3/video-js.css" rel="stylesheet">
+
+   If you'd like to support IE8 
+  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript"> </script>
  
@@ -25,14 +28,21 @@
                       <input type="button" name="search-btn" id="search-btn" value="submit">
                   </div>
               </form>
-              <div id="results"></div>
-               <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                  <div id="player"></div>
-                      
+              <!--<div id="results"></div>
+              <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+              poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                <source src="MY_VIDEO.mp4" type='video/mp4'>
+                <source src="MY_VIDEO.webm" type='video/webm'>
+                <p class="vjs-no-js">
+                --> 
+                <iframe id="youTubeIframe" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
           </section>  
 
-
+<!--<script src="http://vjs.zencdn.net/6.6.3/video.js"></script> -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link in jQuery, API and Basic Javascript -->
 <script src="assets/app.js"></script>
+
+<!--<video class="video-js vjs-default-skin" width="1280" height="720%" controls data-setup='{}'>
+    <source src="testvideo1.mp4" type='video/mp4'> -->
 </body>
 </html>

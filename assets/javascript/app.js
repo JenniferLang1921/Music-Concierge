@@ -63,7 +63,6 @@ function displayArtistVideo(query, location) {
     // execute the request
     request.execute(function (response) {
         var results = response.result;
-        console.log(results);
         $(location).html("");
         $.each(results.items, function (index, item) {
             $.get("tpl/item.html", function (data) {

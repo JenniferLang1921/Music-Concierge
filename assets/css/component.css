@@ -328,7 +328,7 @@ input[type="search"] { /* reset normalize */
 		padding: 0 25% 0 10px;
 	}
 	.morphsearch.open .morphsearch-input {
-		font-size: 2em;
+		font-size: 1.75em;
 	}
 	.dummy-column {
 		float: none;

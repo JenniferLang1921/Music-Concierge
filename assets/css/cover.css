@@ -43,8 +43,8 @@ body {
 }
 
 .cover-container {
-  min-width: 42em;
-  /*min-width: 768px;*?
+  /*min-width: 42em;*/
+  min-width: 768px;
   /*width: 968px;*/
 }
 

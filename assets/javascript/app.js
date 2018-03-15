@@ -26,7 +26,11 @@ function displayArtistInfo(data, location) {
     var itemBio = data.artist.bio.summary;
     var itemImage = data.artist.image[3]["#text"];
     var videoSearchQuery = itemArtist.replace(/\s/g, '+');
+    var queryAppend = "+music+video";
 
+    videoSearchQuery.concat(queryAppend);
+
+    var videoLocation = '#artist-video' + counter;
     //console.log(itemArtist);
     //console.log(itemBio);
     //console.log(itemImage);
@@ -41,68 +45,49 @@ function displayArtistInfo(data, location) {
     var newEventWidget = $('<div class="card mb-4 bg-primary text-white"><div class="card-body"><script charset="utf-8" src="https://widget.bandsintown.com/main.min.js"></script><a class="card-text bit-widget-initializer" data-artist-name="' + itemArtist + '" data-display-local-dates="false" data-display-past-dates="true" data-auto-style="false" data-text-color="#000000" data-link-color="#2F95DE" data-popup-background-color="#FFFFFF" data-background-color="#FFFFFF" data-display-limit="15" data-link-text-color="#FFFFFF"></a><h5 </div>');
     //console.log(newEventWidget);
 
-    var newCard = $('<div class="row"><div class="card dummy-media-object artist-result"><div class="card-body"><li class="media"><img class="mr-3" src="' + itemImage + '" alt="Generic placeholder image"><div class="media-body"><h5 class="mt-0 mb-1">' + itemArtist + '</h5><p class="text-left">' + itemBio + '</p><div id="artist-video">VIDEO</div></div></li><div class="card text-center border-0"><div class="mb-2" id="accordion' + counter + '"><button class="btn btn-link p-0" data-toggle="collapse" data-target="#collapse' + counter + '" aria-expanded="true" aria-controls="collapse' + counter + '">Click here for concert schedule</button></div></div><div id="collapse' + counter + '" class="collapse" aria-labelledby="headingOne" data-parent="#accordion' + counter + '"><div class="card-body" id="collapse-widget">' + newEventWidget["0"].innerHTML + '</div></div></div></div></div>');
+    var newCard = $('<div class="row"><div class="card dummy-media-object artist-result"><div class="card-body"><li class="media"><img class="mr-3" src="' + itemImage + '" alt="Generic placeholder image"><div class="media-body"><h5 class="mt-0 mb-1">' + itemArtist + '</h5><p class="text-left">' + itemBio + '</p><div id="artist-video' + counter + '">VIDEO</div></div></li><div class="card text-center border-0"><div class="mb-2" id="accordion' + counter + '"><button class="btn btn-link p-0" data-toggle="collapse" data-target="#collapse' + counter + '" aria-expanded="true" aria-controls="collapse' + counter + '">Click here for concert schedule</button></div></div><div id="collapse' + counter + '" class="collapse" aria-labelledby="headingOne" data-parent="#accordion' + counter + '"><div class="card-body" id="collapse-widget">' + newEventWidget["0"].innerHTML + '</div></div></div></div></div>');
 
 
     $(location).append(newCard);
-    displayArtistVideo(videoSearchQuery);
+    displayArtistVideo(videoSearchQuery, videoLocation);
     counter++;
     resultCounter.num = counter;
     //console.log(resultCounter.num);
 }
 
-function displayArtistVideo(query) {
+function displayArtistVideo(query, location) {
+    console.log('video search query: ', query);
+    console.log('video location: ', location);
 
-    console.log(query);
+    function tplawesome(e, t) { res = e; for (var n = 0; n < t.length; n++) { res = res.replace(/\{\{(.*?)\}\}/g, function (e, r) { return t[n][r] }) } return res }
 
-    //console.log(gapi);
-
+    // prepare the request
     var request = gapi.client.youtube.search.list({
         part: "snippet",
         type: "video",
-        q: encodeURIComponent(query),
+        q: query,
+        //q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
         maxResults: 1,
-        order: "viewCount",
+        order: "relevance",
         autoplay: 1,
-        loop: 1,
+        loop: 1
     });
 
-    function yt(e, t) {
-        res = e;
-
-        for (var n = 0; n < t.length; n++) {
-            res = res.replace(/\{\{(.*?)\}\}/g, function (e, r) {
-                return t[n][r]
-            })
-        }
-        return res
-    }
-
-    function resetVideoHeight() {
-        $(".video").css("height", $("#artist-video").width() * 9 / 16);
-    }
-
-    function init() {
-        gapi.client.setApiKey("AIzaSyCsKTmPxVHUp9o0kXMu5_gkI2XQU1ohWIA");
-        gapi.client.load("youtube", "v3", function () {
-            // yt api is ready
-        });
-    }
+    console.log('request: ', request);
+    console.log('video location: ', location);
+    //console.log('request.q: ', request.q);
 
     // execute the request
     request.execute(function (response) {
         var results = response.result;
-        $("#artist-video").html("");
+        console.log(results);
+        $(location).html("");
         $.each(results.items, function (index, item) {
-            $.get("yt.html", function (data) {
-                $("#artist-video").append(yt(data, [
-                    {
-                        "title": item.snippet.title,
-                        "videoid": item.id.videoId
-                    }]));
+            $.get("tpl/item.html", function (data) {
+                $(location).append(tplawesome(data, [{ "title": item.snippet.title, "videoid": item.id.videoId }]));
             });
         });
-        resetVideoHeight();
+        resetVideoHeight(location);
     });
 }
 
@@ -360,7 +345,19 @@ $(document).on('click', '.artist-tile', function (ev) {
 
 // Youtube video code
 
+function resetVideoHeight(location) {
+    $(".video").css("height", $(location).width() * 9 / 16);
+}
 
+function init() {
+    gapi.client.setApiKey(apiKeyTwo);
+    gapi.client.load("youtube", "v3", function () {
+        // yt api is ready
+        //retrieveArtistInfo();
+    });
+
+    console.log(gapi);
+}
 
 /*
 $(function () {
@@ -396,4 +393,3 @@ $(function () {
     $(window).on("resize", resetVideoHeight);
 });
 */
-

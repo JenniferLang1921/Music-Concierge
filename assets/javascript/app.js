@@ -26,6 +26,7 @@ function displayArtistInfo(data, location) {
 
     var videoLocation = '#artist-video' + counter;
     var newEventWidget = $('<div class="card mb-4 bg-primary text-white"><div class="card-body"><script charset="utf-8" src="https://widget.bandsintown.com/main.min.js"></script><a class="card-text bit-widget-initializer" data-artist-name="' + itemArtist + '" data-display-local-dates="false" data-display-past-dates="true" data-auto-style="false" data-text-color="#000000" data-link-color="#2F95DE" data-popup-background-color="#FFFFFF" data-background-color="#FFFFFF" data-display-limit="15" data-link-text-color="#FFFFFF"></a><h5 </div>');
+
     var newCard = $('<div class="row"><div class="card dummy-media-object artist-result"><div class="card-body"><li class="media"><img class="mr-3" src="' + itemImage + '" alt="Generic placeholder image"><div class="media-body"><h5 class="mt-0 mb-1">' + itemArtist + '</h5><p class="text-left">' + itemBio + '</p><div id="artist-video' + counter + '">VIDEO</div></div></li><div class="card text-center border-0"><div class="mb-2" id="accordion' + counter + '"><button class="btn btn-link p-0" data-toggle="collapse" data-target="#collapse' + counter + '" aria-expanded="true" aria-controls="collapse' + counter + '">Click here for concert schedule</button></div></div><div id="collapse' + counter + '" class="collapse" aria-labelledby="headingOne" data-parent="#accordion' + counter + '"><div class="card-body" id="collapse-widget">' + newEventWidget["0"].innerHTML + '</div></div></div></div></div>');
 
     $(location).append(newCard);
@@ -38,10 +39,12 @@ function displayArtistVideo(query, location) {
 
     function tplawesome(e, t) {
         res = e;
+
         for (var n = 0; n < t.length; n++) {
-            res = res.replace(/\{\{(.*?)\}\}/g, function (e, r) {
-                return t[n][r]
-            })
+            res = res.replace(/\{\{(.*?)\}\}/g,
+                function (e, r) {
+                    return t[n][r]
+                })
         }
         return res
     }
@@ -71,6 +74,7 @@ function displayArtistVideo(query, location) {
 }
 
 function displayTopArtistList(inputObj, location) {
+
     for (var i = 0; i < inputObj.artists.artist.length; i++) {
         var itemArtist = inputObj.artists.artist[i].name;
         var itemImage = inputObj.artists.artist[i].image[3]["#text"];
@@ -92,6 +96,7 @@ function displayTopTrackPanel(inputObj, location) {
 }
 
 function displayTopAlbumPerTag(inputObj, location) {
+
     for (var i = 0; i < inputObj.length; i++) {
         var itemGenre = inputObj[i][0][0];
         var itemAlbum = inputObj[i][0][1];
@@ -104,6 +109,7 @@ function displayTopAlbumPerTag(inputObj, location) {
 }
 
 function retrieveArtistInfo(query) {
+
     var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + query + '&api_key=' + apiKeyOne + '&format=json&limit=10';
 
     $.ajax({
@@ -166,7 +172,6 @@ function retrieveTopAlbumPerTag(inputObj) {
             method: "GET",
             url: queryURL
         }).then(function (response) {
-
             var tempArr = [];
             var genre = (response.albums['@attr']['tag']);
             var album = (response.albums.album[0].name);
@@ -217,12 +222,10 @@ $(document).on('click', '.artist-tile', function (ev) {
 
         // show/hide search area
         toggleSearch = function (evt) {
-
             // return if open and the input gets focused
             if (evt.type.toLowerCase() === 'focus' && isOpen) return false;
 
             var offsets = morphsearch.getBoundingClientRect();
-
             if (isOpen) {
                 classie.remove(morphSearch, 'open');
 
@@ -239,10 +242,10 @@ $(document).on('click', '.artist-tile', function (ev) {
                 }
 
                 input.blur();
-            } else {
+            }
+            else {
                 classie.add(morphSearch, 'open');
             }
-
             isOpen = !isOpen;
         };
 
@@ -254,7 +257,6 @@ $(document).on('click', '.artist-tile', function (ev) {
     // keyboard navigation events
     document.addEventListener('keydown', function (ev) {
         var keyCode = ev.keyCode || ev.which;
-
         if (keyCode === 27 && isOpen) {
             toggleSearch(ev);
             $(".morphsearch-content").show();
@@ -264,7 +266,6 @@ $(document).on('click', '.artist-tile', function (ev) {
 
     morphSearch.querySelector('button[type="submit"]').addEventListener('click', function (ev) {
         ev.preventDefault();
-
         if ((document.getElementById("searchQuery").value).trim()) {
             $(".morphsearch-content").hide();
 
@@ -277,7 +278,6 @@ $(document).on('click', '.artist-tile', function (ev) {
 
     morphSearch.querySelector('span[class="morphsearch-close"]').addEventListener('click', function (ev) {
         ev.preventDefault();
-
         $(".morphsearch-content").show();
         $(".morphsearch-results").empty();
     });
@@ -290,6 +290,6 @@ function resetVideoHeight(location) {
 function init() {
     gapi.client.setApiKey(apiKeyTwo);
     gapi.client.load("youtube", "v3", function () {
-        // YouTube API is ready
+        // yt api is ready
     });
 }

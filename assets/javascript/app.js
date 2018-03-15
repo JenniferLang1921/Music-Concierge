@@ -65,7 +65,7 @@ function displayArtistVideo(query, location) {
         var results = response.result;
         $(location).html("");
         $.each(results.items, function (index, item) {
-            $.get("tpl/item.html", function (data) {
+            $.get("assets/tpl/item.html", function (data) {
                 $(location).append(tplawesome(data, [{ "title": item.snippet.title, "videoid": item.id.videoId }]));
             });
         });

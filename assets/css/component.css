@@ -272,6 +272,7 @@ input[type="search"] { /* reset normalize */
 	display: block;
 	margin: 0.3em 0;
 	height: auto;
+	min-height: 275px;
 	cursor: pointer;
 	border-radius: 5px;
 	background: rgba(118,117,128,0.05);

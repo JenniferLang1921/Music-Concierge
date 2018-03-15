@@ -8,12 +8,12 @@ Enter artist name in search bar. It will return an artist card, complete with a 
 
 Built With
 #
-LastFM API
-Youtube API
-BandsInTown API
+Last.fm API
+YouTube Data API
+Bandsintown API
 
 Contributors
- * James Johnson - https://www.linkedin.com/in/jamesperryjohnson/
+ * James Perry Johnson - https://www.linkedin.com/in/jamesperryjohnson/
  * Cameron Wilkinson - https://www.linkedin.com/in/cameron-wilkinson-b4936614b/
  * Jennifer Lang - https://www.linkedin.com/in/jennifer-lang-5017aa126/
  * Patrick Shehan - https://www.linkedin.com/in/patrick-shehan/

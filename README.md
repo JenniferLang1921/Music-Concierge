@@ -4,9 +4,9 @@ Product Description: A website to help users receive upcoming concerts, biograph
 
 Usage
 #
-Enter artist name in search bar. It will return an artist card, complete with a biography, link to upcoming concerts and their top-viewed vide.
+Enter artist name in search bar. It will return an artist card, complete with a biography, link to upcoming concerts and their top-viewed video.
 
-Built With
+Technologies Used: Jquery, API keys, Bootstrap 4.0
 #
 Last.fm API
 YouTube Data API
